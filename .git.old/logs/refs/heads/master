@@ -1,0 +1,21 @@
+0000000000000000000000000000000000000000 758f8cf28108ddf3b2d67add2b1c32c16fa6f493 dapawn <dapawn@gmail.com> 1568303938 -0400	clone: from git@github.com:dapawn/react-redux-firebase-planner.git
+758f8cf28108ddf3b2d67add2b1c32c16fa6f493 52db03ca745e226f8f90cdc402fcc60cf289b2ab dapawn <dapawn@gmail.com> 1568305118 -0400	commit: Initial start from create-react-app.
+52db03ca745e226f8f90cdc402fcc60cf289b2ab c9bdad5baf65ea72973e04099a4743e00d59add8 dapawn <dapawn@gmail.com> 1568309735 -0400	commit: Initial Setup of App files.
+c9bdad5baf65ea72973e04099a4743e00d59add8 32a86d93739f6652039ee434dd9571c2a25d3274 dapawn <dapawn@gmail.com> 1568326827 -0400	commit: First pass at Navbar links.
+32a86d93739f6652039ee434dd9571c2a25d3274 5032cf6cc2e138736a182856d24d215bf67541b8 dapawn <dapawn@gmail.com> 1568329790 -0400	commit: Workin on Dashboard, stubbed out ProjectList.
+5032cf6cc2e138736a182856d24d215bf67541b8 968fd484087d1a27960b3eb1325389c755c3c555 dapawn <dapawn@gmail.com> 1568337186 -0400	commit: Worked on ProjectDetails section, stubbed things out.
+968fd484087d1a27960b3eb1325389c755c3c555 edff5aa56cef3bc3531cc10b28795e9203804ca8 dapawn <dapawn@gmail.com> 1568407030 -0400	commit: Stubbed out authentification components
+edff5aa56cef3bc3531cc10b28795e9203804ca8 7b3da358ddaf34b765a9652ce5ceeb26449334b2 dapawn <dapawn@gmail.com> 1568412529 -0400	commit: Added Some Sytle.
+7b3da358ddaf34b765a9652ce5ceeb26449334b2 b34c233097401ac43700705889c7840689662e78 dapawn <dapawn@gmail.com> 1568416033 -0400	commit: Started setting up Redux.
+b34c233097401ac43700705889c7840689662e78 0f1e1db10c2f4769156600028815e8e7025e155a dapawn <dapawn@gmail.com> 1568418170 -0400	commit: Connected up Redux store.
+0f1e1db10c2f4769156600028815e8e7025e155a 708d1d65b5db4a3ee1758fc5220633f2ed24571e dapawn <dapawn@gmail.com> 1568765282 -0400	commit: Added basic 'thunk' support, so we can add DB backend.
+708d1d65b5db4a3ee1758fc5220633f2ed24571e 5cdeff9a87a269ebfc461a3aab97cb6ff0f5c5be dapawn <dapawn@gmail.com> 1568910340 -0400	commit: Set up Firebase/Firestore.
+5cdeff9a87a269ebfc461a3aab97cb6ff0f5c5be dffc0bf0dec542c34252771f3cc58389dbaf7fbd dapawn <dapawn@gmail.com> 1568931240 -0400	commit: Loading info from firestore database.
+dffc0bf0dec542c34252771f3cc58389dbaf7fbd 50689610ea331ea6ae8c9f760619861fdf988b0f dapawn <dapawn@gmail.com> 1569004691 -0400	commit: Added Firebase authentification to the App.
+50689610ea331ea6ae8c9f760619861fdf988b0f 60c286a5513b29a0dd2fde315cf87069f182830d dapawn <dapawn@gmail.com> 1569290439 -0400	commit: Made small update to Notification component
+60c286a5513b29a0dd2fde315cf87069f182830d bf1ca57cd8d2c7c244274513ca765b8cdd94beb7 dapawn <dapawn@gmail.com> 1569429018 -0400	commit: Added wait for Auth to be ready, and fixed authentification bug
+bf1ca57cd8d2c7c244274513ca765b8cdd94beb7 42e888c3686081d767aa06a88dfdedc486ba6b94 dapawn <dapawn@gmail.com> 1569438355 -0400	commit: Added route guards based on authentification.
+42e888c3686081d767aa06a88dfdedc486ba6b94 ae483ac0731552df9fbf9aafb923e87b42faab6b dapawn <dapawn@gmail.com> 1569549656 -0400	commit: Added date and author info to project details and summary
+ae483ac0731552df9fbf9aafb923e87b42faab6b f97279850aded4e9d8914583364b51be1947225e dapawn <dapawn@gmail.com> 1569632832 -0400	commit: Added cloud funtions for notifications.
+f97279850aded4e9d8914583364b51be1947225e bf479ad5ea3b2b88e0d5e05d47da67485ca3cb43 dapawn <dapawn@gmail.com> 1569643325 -0400	commit: Added notification info display to dashboard
+bf479ad5ea3b2b88e0d5e05d47da67485ca3cb43 16acf54779df17c6df5fe82b20cc72657b1f2698 dapawn <dapawn@gmail.com> 1570154497 -0400	commit: Using repository react-redux-firebase-planner as the starting point for a discussion board app.
