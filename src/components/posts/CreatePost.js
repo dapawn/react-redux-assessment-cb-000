@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createProject } from '../../store/actions/projectActions';
+import { createPost } from '../../store/actions/postActions';
 import { Redirect } from 'react-router-dom';
 
-class CreateProject extends Component {
+class CreatePost extends Component {
   state = {
     title: '',
     content: ''
@@ -17,7 +17,7 @@ class CreateProject extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createProject(this.state);
+    this.props.createPost(this.state);
     this.props.history.push('/');
   }
 
@@ -29,7 +29,7 @@ class CreateProject extends Component {
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Create Project</h5>
+          <h5 className="grey-text text-darken-3">Create Post</h5>
           <div className="input-field">
             <label htmlFor="title">Title</label>
             <input type="text" id="title" onChange={this.handleChange} />
@@ -55,8 +55,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createProject: (project) => dispatch(createProject(project))
+    createPost: (post) => dispatch(createPost(post))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePost);

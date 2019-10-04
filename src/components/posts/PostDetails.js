@@ -5,45 +5,45 @@ import {firestoreConnect} from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-const ProjectDetails = (props) => {
-  const { project, auth } = props;
+const PostDetails = (props) => {
+  const { post, auth } = props;
   if (!auth.uid) return <Redirect to='signin' />
 
-  if (project) { 
+  if (post) { 
     return (
-      <div className="container section project-details">
+      <div className="container section post-details">
         <div className="card z-depth-0">
           <div className="card-content">
-            <span className="card-title"> {project.title}</span>	
-            <p>{ project.content }</p>
+            <span className="card-title"> {post.title}</span>	
+            <p>{ post.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-            <div>Posted by {project.authorFirstName} {project.authorLastName}</div>
-            <div>On {moment(project.createdAt.toDate()).calendar()} </div>
+            <div>Posted by {post.authorFirstName} {post.authorLastName}</div>
+            <div>On {moment(post.createdAt.toDate()).calendar()} </div>
           </div>
         </div>
       </div>
     )
   } else {
     return (
-      <p>Loading project...</p>
+      <p>Loading post...</p>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-    const projects = state.firestore.data.projects
-    const project = projects ? projects[id] : null;
+    const posts = state.firestore.data.posts
+    const post = posts ? posts[id] : null;
   return {
     auth: state.firebase.auth,
-    project: project
+    post: post
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'projects' }
+    { collection: 'posts' }
   ])
-)(ProjectDetails);
+)(PostDetails);
