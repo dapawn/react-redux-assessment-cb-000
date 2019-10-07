@@ -4,13 +4,14 @@ import 'firebase/auth'
 
 // Init Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyC5uBe0NE3Dx9q9wv_QdToDoaF5qJVdOak",
-  authDomain: "myplanner-3885c.firebaseapp.com",
-  databaseURL: "https://myplanner-3885c.firebaseio.com",
-  postId: "myplanner-3885c",
-  storageBucket: "myplanner-3885c.appspot.com",
-  messagingSenderId: "551881922424",
-  appId: "1:551881922424:web:874b9116a076a3356c5a8d"
+  apiKey: "AIzaSyCd9YAaxNey0MwHq88I0QQClxte6yfiLzM",
+  authDomain: "yarticulate.firebaseapp.com",
+  databaseURL: "https://yarticulate.firebaseio.com",
+  projectId: "yarticulate",
+  storageBucket: "yarticulate.appspot.com",
+  messagingSenderId: "1089242301588",
+  appId: "1:1089242301588:web:8b0d9f8f6a9d7ba41fe081",
+  measurementId: "G-5MQ51ZCM0C"
 };
 
 firebase.initializeApp(firebaseConfig);
