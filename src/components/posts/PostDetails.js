@@ -4,9 +4,11 @@ import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import CreateComment from './CreateComment';
+import ShowComment from './ShowComment';
 
 const PostDetails = (props) => {
-  const { post, auth } = props;
+  const { id, post, auth, comments } = props;
   if (!auth.uid) return <Redirect to='signin' />
 
   if (post) { 
@@ -20,6 +22,10 @@ const PostDetails = (props) => {
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by {post.authorFirstName} {post.authorLastName}</div>
             <div>On {moment(post.createdAt.toDate()).calendar()} </div>
+            <CreateComment parentId={ id }/>
+            <div className="comment-list section">
+              { comments.map(c => <ShowComment comment={c} /> ) }
+            </div>
           </div>
         </div>
       </div>
@@ -33,11 +39,15 @@ const PostDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-    const posts = state.firestore.data.posts
+    const posts = state.firestore.data.posts;
     const post = posts ? posts[id] : null;
+    const comments = posts ? Object.values(posts).filter(p => p.parentId === id) : null;
   return {
     auth: state.firebase.auth,
-    post: post
+    post: post,
+    posts: posts,
+    id: id,
+    comments: comments
   }
 }
 

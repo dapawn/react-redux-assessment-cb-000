@@ -6,7 +6,7 @@ const PostList = ({posts}) => {
   return (
     <div className="post-list section">
       { posts && posts.map(post => {
-        return (
+        return (post.title === 'Comment') ? null : (
           <Link to={'/post/' + post.id } key={post.id} >
             <PostSummary post={post} />
           </Link>
