@@ -16,7 +16,8 @@ class CreateComment extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createPost({ ...this.state, title: 'Comment', parentId: this.props.parentId });
+    this.props.createPost({ ...this.state, likes: 0, title: 'Comment', parentId: this.props.parentId });
+    this.setState({ content: '' });
   }
 
 
@@ -30,7 +31,7 @@ class CreateComment extends Component {
           <h6 className="grey-text text-darken-3">What do you think?</h6>
           <div className="input-field">
             <label htmlFor="content">Your thoughts.</label>
-            <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
+            <textarea value={this.state.content} id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Share</button>

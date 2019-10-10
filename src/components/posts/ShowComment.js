@@ -18,7 +18,7 @@ const ShowComment = (props) => {
             <p>{ comment.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-            <div>Posted by {comment.authorFirstName} {comment.authorLastName}</div>
+            <div>Posted by {comment.authorFirstName} {comment.authorLastName} <i class="material-icons"> thumb_up</i> </div>
             <div>On {moment(comment.createdAt.toDate()).calendar()} </div>
           </div>
         </div>

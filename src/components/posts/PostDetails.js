@@ -20,8 +20,8 @@ const PostDetails = (props) => {
             <p>{ post.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-            <div>Posted by {post.authorFirstName} {post.authorLastName}</div>
-            <div>On {moment(post.createdAt.toDate()).calendar()} </div>
+            <div>Posted by {post.authorFirstName} {post.authorLastName}  <i class="material-icons"> thumb_up</i></div>
+            <div> {moment(post.createdAt.toDate()).calendar()} </div>
             <CreateComment parentId={ id }/>
             <div className="comment-list section">
               { comments.map(c => <ShowComment comment={c} /> ) }
