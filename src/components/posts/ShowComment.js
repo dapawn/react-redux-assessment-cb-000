@@ -4,11 +4,18 @@ import {compose} from 'redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import { likeIt } from '../../store/actions/postActions';
 
 const ShowComment = (props) => {
   console.log(props);
   const { comment, auth } = props;
   if (!auth.uid) return <Redirect to='signin' />
+
+  const handleClick = (e) => {
+    console.log('In handleClick');
+    props.likeIt(comment, auth.uid);
+    //change icon color to pink
+  }
 
   if (comment) { 
     return (
@@ -18,7 +25,9 @@ const ShowComment = (props) => {
             <p>{ comment.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-            <div>Posted by {comment.authorFirstName} {comment.authorLastName} <i class="material-icons"> thumb_up</i> </div>
+            <div>Posted by {comment.authorFirstName} {comment.authorLastName} 
+              <a href="#" onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+            </div>
             <div>On {moment(comment.createdAt.toDate()).calendar()} </div>
           </div>
         </div>
@@ -37,8 +46,15 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  console.log('In mapDispatchToProps');
+  return {
+    likeIt: (comment, id) => dispatch(likeIt(comment, id))
+  }
+}
+
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
     { collection: 'posts' }
   ])

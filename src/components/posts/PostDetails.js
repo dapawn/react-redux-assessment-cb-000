@@ -6,10 +6,19 @@ import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import CreateComment from './CreateComment';
 import ShowComment from './ShowComment';
+import { likeIt } from '../../store/actions/postActions';
 
 const PostDetails = (props) => {
   const { id, post, auth, comments } = props;
   if (!auth.uid) return <Redirect to='signin' />
+
+  const handleClick = (e) => {
+    console.log('In handleClick');
+    props.likeIt(post, id);
+    //change icon color to pink
+  }
+
+
 
   if (post) { 
     return (
@@ -20,7 +29,9 @@ const PostDetails = (props) => {
             <p>{ post.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-            <div>Posted by {post.authorFirstName} {post.authorLastName}  <i class="material-icons"> thumb_up</i></div>
+            <div>Posted by {post.authorFirstName} {post.authorLastName}  
+              <a href="#" onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+            </div>
             <div> {moment(post.createdAt.toDate()).calendar()} </div>
             <CreateComment parentId={ id }/>
             <div className="comment-list section">
@@ -51,8 +62,15 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  console.log('In mapDispatchToProps');
+  return {
+    likeIt: (post, id) => dispatch(likeIt(post, id))
+  }
+}
+
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([
     { collection: 'posts' }
   ])
