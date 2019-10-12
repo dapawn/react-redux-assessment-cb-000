@@ -21,6 +21,14 @@ const PostDetails = (props) => {
 
 
   if (post) { 
+    if (auth.uid == post.authorId) {
+      var enable_like = <i className="material-icons"> thumb_up</i>
+    } else if ( post.likes.some(uid => uid === auth.uid) ) {
+      var enable_like = <i className="material-icons pink-text"> thumb_up</i>
+    } else {
+      var enable_like = <a  onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+    }
+
     return (
       <div className="container section post-details">
         <div className="card z-depth-0">
@@ -30,7 +38,7 @@ const PostDetails = (props) => {
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by {post.authorFirstName} {post.authorLastName}  
-              <a href="#" onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+              {enable_like} {post.likes.length} likes
             </div>
             <div> {moment(post.createdAt.toDate()).calendar()} </div>
             <CreateComment parentId={ id }/>
@@ -65,7 +73,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   console.log('In mapDispatchToProps');
   return {
-    likeIt: (post, id) => dispatch(likeIt(post, id))
+    likeIt: (post) => dispatch(likeIt(post))
   }
 }
 

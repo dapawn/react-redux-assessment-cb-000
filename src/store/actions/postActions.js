@@ -14,7 +14,8 @@ export const createPost = (post) => {
       authorId: authorId,
       likes: [],
       createdAt: new Date()
-    }).then( () => {
+    }).then( (docRef) => {
+      docRef.update({id: docRef.id})
       dispatch({type: 'CREATE_POST', post});
     }).catch( (err) => {
       dispatch({type: 'CREATE_POST_ERROR', err});
@@ -22,19 +23,26 @@ export const createPost = (post) => {
   }
 }
 
-export const likeIt = (post, id) => {
+export const likeIt = (post) => {
   console.log('In postActions.likeIt');
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //make async db call
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
-    firestore.collection('posts').doc(id).update({
-      likes: [...post.likes, authorId]
-    }).then( () => {
-      dispatch({type: 'LIKE_POST', post});
-    }).catch( (err) => {
-      dispatch({type: 'LIKE_POST_ERROR', err});
-    })
+
+    //You cant like a post you wrote not can you give mulitple likes
+    if ( authorId !== post.authorId && !post.likes.some(uid => uid === authorId) ) {
+      firestore.collection('posts').doc(post.id).update({
+        likes: [...post.likes, authorId]
+      }).then( () => {
+        dispatch({type: 'LIKE_POST', post});
+      }).catch( (err) => {
+        dispatch({type: 'LIKE_POST_ERROR', err});
+      })
+    } else {
+      console.log('You cant like a post you wrote not can you give mulitple likes');
+    }
+
   }
 }

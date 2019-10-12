@@ -13,11 +13,18 @@ const ShowComment = (props) => {
 
   const handleClick = (e) => {
     console.log('In handleClick');
-    props.likeIt(comment, auth.uid);
-    //change icon color to pink
+    props.likeIt(comment);
   }
 
   if (comment) { 
+    if (auth.uid == comment.authorId) {
+      var enable_like = <i className="material-icons"> thumb_up</i>
+    } else if ( comment.likes.some(uid => uid === auth.uid) ) {
+      var enable_like = <i className="material-icons pink-text"> thumb_up</i>
+    } else {
+      var enable_like = <a  onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+    }
+
     return (
       <div className="container section comment-details">
         <div className="card z-depth-0">
@@ -26,9 +33,9 @@ const ShowComment = (props) => {
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by {comment.authorFirstName} {comment.authorLastName} 
-              <a href="#" onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+              {enable_like} {comment.likes.length} likes
             </div>
-            <div>On {moment(comment.createdAt.toDate()).calendar()} </div>
+            <div> {moment(comment.createdAt.toDate()).calendar()} </div>
           </div>
         </div>
       </div>
@@ -42,14 +49,14 @@ const ShowComment = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   console.log('In mapDispatchToProps');
   return {
-    likeIt: (comment, id) => dispatch(likeIt(comment, id))
+    likeIt: (comment) => dispatch(likeIt(comment))
   }
 }
 
