@@ -34,7 +34,8 @@ export const likeIt = (post) => {
     //You cant like a post you wrote not can you give mulitple likes
     if ( authorId !== post.authorId && !post.likes.some(uid => uid === authorId) ) {
       firestore.collection('posts').doc(post.id).update({
-        likes: [...post.likes, authorId]
+        likes: [...post.likes, authorId],
+        total_likes: post.likes.length
       }).then( () => {
         dispatch({type: 'LIKE_POST', post});
       }).catch( (err) => {

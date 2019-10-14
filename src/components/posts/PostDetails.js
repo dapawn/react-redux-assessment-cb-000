@@ -22,21 +22,21 @@ const PostDetails = (props) => {
 
   if (post) { 
     if (auth.uid == post.authorId) {
-      var enable_like = <i className="material-icons"> thumb_up</i>
+      var enable_like = <i className="material-icons tooltipped" data-position="top" data-tooltip="You can't like your own post."> thumb_up</i>
     } else if ( post.likes.some(uid => uid === auth.uid) ) {
-      var enable_like = <i className="material-icons pink-text"> thumb_up</i>
+      var enable_like = <i className="material-icons pink-text tooltipped" data-position="top" data-tooltip="You already liked this post."> thumb_up</i>
     } else {
-      var enable_like = <a  onClick={handleClick}><i className="material-icons"> thumb_up</i></a>
+      var enable_like = <a  onClick={handleClick} className="tooltipped" data-position="top" data-tooltip="Like it."><i className="material-icons"> thumb_up</i></a>
     }
 
     return (
-      <div className="container section post-details">
-        <div className="card z-depth-0">
+      <div className="container section post-details" style={{background: 'rgb(245,245,245,0)'}} >
+        <div className="card z-depth-0" style={{background: 'rgb(255,255,255,.8)'}} >
           <div className="card-content">
             <span className="card-title"> {post.title}</span>	
             <p>{ post.content }</p>
           </div>
-          <div className="card-action grey lighten-4 grey-text">
+          <div style={{background: 'rgb(245,245,245,.3)'}} className="card-action grey-text ">
             <div>Posted by {post.authorFirstName} {post.authorLastName}  
               {enable_like} {post.likes.length} likes
             </div>
@@ -58,9 +58,11 @@ const PostDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
-    const posts = state.firestore.data.posts;
+    const posts = state.firestore.data.posts
     const post = posts ? posts[id] : null;
-    const comments = posts ? Object.values(posts).filter(p => p.parentId === id) : null;
+    const comments = posts ? Object.values(posts)
+                             .filter(p => p.parentId === id)
+                             .sort((a, b) =>  b.total_likes - a.total_likes ) : null;
   return {
     auth: state.firebase.auth,
     post: post,

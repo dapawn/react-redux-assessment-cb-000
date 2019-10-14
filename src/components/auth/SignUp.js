@@ -28,8 +28,8 @@ class SignUp extends Component {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to='/' />
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
+      <div className="container" style={{background: 'rgb(255,255,255,.9)'}} >
+        <form onSubmit={this.handleSubmit} >
           <h5 className="grey-text text-darken-3">Sign Up</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>

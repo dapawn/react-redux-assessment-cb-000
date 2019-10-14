@@ -9,9 +9,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url(/images/market_bg.jpg) no-repeat;
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: top;
   min-height: 100%;
+  background-color: #605343;
 
 }
 
