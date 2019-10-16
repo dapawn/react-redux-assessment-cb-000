@@ -24,7 +24,6 @@ class CreateComment extends Component {
   render() {
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to='signin' />
-    console.log(this.state);
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">

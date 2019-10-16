@@ -7,12 +7,10 @@ import moment from 'moment';
 import { likeIt } from '../../store/actions/postActions';
 
 const ShowComment = (props) => {
-  console.log(props);
   const { comment, auth } = props;
   if (!auth.uid) return <Redirect to='signin' />
 
   const handleClick = (e) => {
-    console.log('In handleClick');
     props.likeIt(comment);
   }
 
@@ -54,7 +52,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('In mapDispatchToProps');
   return {
     likeIt: (comment) => dispatch(likeIt(comment))
   }

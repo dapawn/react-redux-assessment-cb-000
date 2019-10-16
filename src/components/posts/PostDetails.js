@@ -13,7 +13,6 @@ const PostDetails = (props) => {
   if (!auth.uid) return <Redirect to='signin' />
 
   const handleClick = (e) => {
-    console.log('In handleClick');
     props.likeIt(post, id);
     //change icon color to pink
   }
@@ -73,7 +72,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('In mapDispatchToProps');
   return {
     likeIt: (post) => dispatch(likeIt(post))
   }

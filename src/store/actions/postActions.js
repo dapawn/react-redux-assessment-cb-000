@@ -13,6 +13,7 @@ export const createPost = (post) => {
       authorLastName: profile.lastName,
       authorId: authorId,
       likes: [],
+      total_likes: 0,
       createdAt: new Date()
     }).then( (docRef) => {
       docRef.update({id: docRef.id})
@@ -24,7 +25,6 @@ export const createPost = (post) => {
 }
 
 export const likeIt = (post) => {
-  console.log('In postActions.likeIt');
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     //make async db call
     const firestore = getFirestore();

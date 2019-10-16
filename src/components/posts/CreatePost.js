@@ -25,7 +25,6 @@ class CreatePost extends Component {
   render() {
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to='signin' />
-    console.log(this.state);
     return (
       <div className="container" style={{background: 'rgb(255,255,255,.9)'}}>
         <form onSubmit={this.handleSubmit} >

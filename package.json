@@ -5,6 +5,7 @@
   "dependencies": {
     "eslint": "^6.4.0",
     "firebase": "^6.6.1",
+    "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",

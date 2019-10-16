@@ -15,6 +15,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore'
+import M from "materialize-css";
 
 // react-redux-firebase options
 const rrfConfig = {
@@ -40,3 +41,10 @@ const rrfConfig = {
     ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
     serviceWorker.register();
   })
+
+  //Materialize Javascript Initialization
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init();
+  });
+

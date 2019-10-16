@@ -9,16 +9,12 @@ const initState = {
 const postReducer = (state = initState, action) => {
   switch (action.type) {
     case 'CREATE_POST':
-      console.log('created post', action.post);
       return state;
     case 'CREATE_POST_ERROR':
-      console.log('created post error', action.err);
       return state;
     case 'LIKE_POST':
-      console.log('liked post', action.post);
       return state;
     case 'LIKE_POST_ERROR':
-      console.log('liked post error', action.err);
       return state;
     default:
       return state;

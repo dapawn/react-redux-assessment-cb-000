@@ -6,6 +6,7 @@ import PostDetails from './components/posts/PostDetails';
 import CreatePost from './components/posts/CreatePost';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
+import 'materialize-css/dist/css/materialize.min.css';
 
 function App() {
   return(
